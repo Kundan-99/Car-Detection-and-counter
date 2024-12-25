@@ -39,11 +39,9 @@ while True:
     if mask_resized.shape[2] == 4:
         mask_resized = cv2.cvtColor(mask_resized, cv2.COLOR_BGRA2BGR)
 
-    # If the mask is grayscale (1 channel), convert it to 3-channel
-    if len(mask_resized.shape) == 2:  # Grayscale image
+    if len(mask_resized.shape) == 2:
         mask_resized = cv2.cvtColor(mask_resized, cv2.COLOR_GRAY2BGR)
 
-    # Apply mask to the resized img
     imgRegion = cv2.bitwise_and(img, mask_resized)
 
     imgGraphics = cv2.imread("car.png", cv2.IMREAD_UNCHANGED)
@@ -55,7 +53,7 @@ while True:
     for r in results:
         boxes = r.boxes
         for box in boxes:
-            # Bounding Box
+
             x1, y1, x2, y2 = box.xyxy[0]
             x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
             w, h = x2 - x1, y2 - y1
@@ -102,7 +100,6 @@ while True:
         cv2.putText(img, str(len(totalCount)), (255, 100),
                     cv2.FONT_HERSHEY_PLAIN, 5, (50, 50, 255), 8)
 
-    # Show the images
     cv2.imshow("Image", img)
-    # cv2.imshow("ImageRegion", imgRegion)
+
     cv2.waitKey(1)
