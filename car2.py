@@ -3,7 +3,7 @@ import cv2
 import cvzone
 import math
 from sort import *
-
+#tumhari mai ke chodo
 cap = cv2.VideoCapture("E:\\Car Counter\\Test Video2.mp4")
 
 model = YOLO("../Yolo-Weights/yolov8l.pt")
